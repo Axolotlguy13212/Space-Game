@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cism81yrsu54r"]
+
+[ext_resource type="Texture2D" uid="uid://q70nithswjkg" path="res://Images/Aliens/Alien_Ship.png" id="1_ws8oh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ptgy"]
+size = Vector2(44, 24)
+
+[node name="AlienShip" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.13687e-13, 1.13687e-13)
+scale = Vector2(0.447917, 0.447917)
+texture = ExtResource("1_ws8oh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_6ptgy")

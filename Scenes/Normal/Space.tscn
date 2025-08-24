@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0sdrj6kn8blr"]
+
+[ext_resource type="Texture2D" uid="uid://dvioqugcnycyl" path="res://Images/bg.png" id="1_1axuv"]
+[ext_resource type="Script" uid="uid://bvdup0h8qjw8g" path="res://Scripts/Player/Movement.cs" id="1_6g371"]
+[ext_resource type="Script" uid="uid://iup3xp51jsxj" path="res://Scripts/Other/BgMovement.cs" id="1_qfp18"]
+[ext_resource type="Texture2D" uid="uid://c1myuxqgs65qs" path="res://Images/Player/Ship.png" id="2_6g371"]
+[ext_resource type="Script" uid="uid://h8xg7kma1vgc" path="res://Scripts/Asteroids/AsteroidSpawner.cs" id="3_pqbqk"]
+[ext_resource type="AudioStream" uid="uid://dev7uoav2kjqn" path="res://Audio/MainTheme.wav" id="4_6mf23"]
+[ext_resource type="Script" uid="uid://iohtqk1d2gai" path="res://Scripts/Aliens/AlienSpawner.cs" id="5_jcxt1"]
+[ext_resource type="FontFile" uid="uid://c5c6nsu8opudu" path="res://Fonts/Silkscreen-Regular.ttf" id="6_dn05j"]
+[ext_resource type="Script" uid="uid://ck4fl4njpucxm" path="res://Scripts/Other/ScoreManager.cs" id="7_dn05j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g371"]
+size = Vector2(100, 38)
+
+[node name="Space" type="Node2D"]
+
+[node name="Bg" type="Node2D" parent="."]
+script = ExtResource("1_qfp18")
+
+[node name="bg" type="Sprite2D" parent="Bg"]
+position = Vector2(960, 540)
+texture = ExtResource("1_1axuv")
+
+[node name="bg" type="Sprite2D" parent="Bg/bg"]
+position = Vector2(1920, 0)
+texture = ExtResource("1_1axuv")
+
+[node name="bg" type="Sprite2D" parent="Bg/bg/bg"]
+position = Vector2(1920, 0)
+texture = ExtResource("1_1axuv")
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(908, 540)
+collision_mask = 2
+script = ExtResource("1_6g371")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_6g371")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_6g371")
+
+[node name="Asteroid Spawner" type="Node2D" parent="."]
+position = Vector2(2002, 575)
+script = ExtResource("3_pqbqk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Asteroid Spawner"]
+stream = ExtResource("4_6mf23")
+volume_db = 12.0
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+editor_draw_limits = true
+
+[node name="Alien Spawner" type="Node2D" parent="."]
+script = ExtResource("5_jcxt1")
+
+[node name="Score_Text" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 56.0
+offset_top = 42.0
+offset_right = 172.0
+offset_bottom = 66.0
+theme_override_fonts/normal_font = ExtResource("6_dn05j")
+theme_override_font_sizes/normal_font_size = 0
+text = "Score"
+
+[node name="Score Manager" type="Node" parent="."]
+script = ExtResource("7_dn05j")
+ScoreTextPath = NodePath("../Score_Text")
+HighScoreTextPath = NodePath("../HighScore_Text")
+
+[node name="HighScore_Text" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 239.0
+offset_top = 47.0
+offset_right = 475.0
+offset_bottom = 71.0
+theme_override_fonts/normal_font = ExtResource("6_dn05j")
+theme_override_font_sizes/normal_font_size = 0
+text = "High Score"

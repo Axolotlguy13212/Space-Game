@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdo614pmii3lh"]
+
+[ext_resource type="Texture2D" uid="uid://j4vunyfs7ns4" path="res://Images/Prototypes/Player prototype.png" id="1_bqvy5"]
+[ext_resource type="Script" uid="uid://dx17kno2kb8y5" path="res://Scripts/Player/AlienShip_Map/Movement_AlienShip.cs" id="1_mlcha"]
+[ext_resource type="Texture2D" uid="uid://0aooj54d1p76" path="res://Images/Prototypes/asteroid prototype.png" id="3_pmfx8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlcha"]
+size = Vector2(184, 183.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmfx8"]
+size = Vector2(1661, 284)
+
+[node name="AlienShip_Map" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(961, 540)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(669, 469)
+script = ExtResource("1_mlcha")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-6.10352e-05, 1.52588e-05)
+scale = Vector2(0.343333, 0.343333)
+texture = ExtResource("1_bqvy5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(5, 11.75)
+shape = SubResource("RectangleShape2D_mlcha")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(962, 1029)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(2.38419e-07, -3.8147e-06)
+scale = Vector2(27.8125, 4.79688)
+texture = ExtResource("3_pmfx8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-9.5, -2)
+shape = SubResource("RectangleShape2D_pmfx8")

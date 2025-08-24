@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp45n3hfgg3c3"]
+
+[ext_resource type="Texture2D" uid="uid://dvioqugcnycyl" path="res://Images/bg.png" id="1_8f1sv"]
+[ext_resource type="FontFile" uid="uid://c5c6nsu8opudu" path="res://Fonts/Silkscreen-Regular.ttf" id="1_wdsci"]
+[ext_resource type="Script" uid="uid://dii2isuxtx1uo" path="res://Scripts/UI/Play.cs" id="2_jc12n"]
+[ext_resource type="Script" uid="uid://bd1uv22i3mx58" path="res://Scripts/UI/Quit.cs" id="3_s0mot"]
+[ext_resource type="Texture2D" uid="uid://boxbcdptsw5gb" path="res://Images/Aliens/Alien_TitleScreen.png" id="4_2paew"]
+[ext_resource type="AudioStream" uid="uid://b3uultfbxv3oq" path="res://Audio/TitleTheme.wav" id="5_jb6po"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_8f1sv")
+
+[node name="AlienTitleScreen" type="Sprite2D" parent="."]
+position = Vector2(901, 612)
+scale = Vector2(1.53687, 1.53687)
+texture = ExtResource("4_2paew")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jb6po")
+autoplay = true
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 2
+offset_left = 814.0
+offset_top = 829.0
+offset_right = 982.0
+offset_bottom = 919.0
+theme_override_fonts/font = ExtResource("1_wdsci")
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+script = ExtResource("3_s0mot")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 2
+offset_left = 802.0
+offset_top = 681.0
+offset_right = 1002.0
+offset_bottom = 771.0
+theme_override_fonts/font = ExtResource("1_wdsci")
+theme_override_font_sizes/font_size = 64
+text = "Play"
+script = ExtResource("2_jc12n")
+
+[node name="Prototype" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 1028.0
+offset_top = 253.0
+offset_right = 1139.0
+offset_bottom = 285.0
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_wdsci")
+text = "PROTOTYPE"
+
+[node name="Logo" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 527.0
+offset_top = 153.0
+offset_right = 1245.0
+offset_bottom = 278.0
+size_flags_horizontal = 0
+theme_override_colors/default_color = Color(0, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("1_wdsci")
+theme_override_font_sizes/normal_font_size = 96
+text = "Space Game"
